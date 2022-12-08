@@ -1,0 +1,13 @@
+instances:
+  - name: elasticsearch
+    dns:
+      - localhost
+    ip:
+      - X.X.X.X
+      - 127.0.0.1
+  - name: kibana
+    dns:
+      - localhost
+    ip:
+      - X.X.X.X
+      - 127.0.0.1
