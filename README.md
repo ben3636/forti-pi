@@ -39,7 +39,7 @@ This is by no means a "highly secure" setup, please do not expose this setup to 
  
  ### Pi-rewall
  
- Pi-rewall is the firewall installation. It is recommended for the Pi 4 due to the Gigabit support for USB-to-Ethernet adapters but will work on a Pi 3 as well. This install handles basic firewall, NAT, Zeek network auditing, & Suricata IDS alerts. This install can be paired with Pi-lastic to ingest Zeek/Suricata logs for network forensics. It is not recommended to install both Pi-lastic and Pi-rewall on the same Pi as a) 8GB RAM likely won't be enough for all that and b) you don't want your SIEM/XDR instance installed on a border system that may have direct internet access.
+ Pi-rewall is the firewall installation. It is recommended for the Pi 4 due to the Gigabit support for USB-to-Ethernet adapters but will work on a Pi 3 as well. This install handles basic firewall, NAT, Zeek network auditing, & Suricata IDS alerts. This install can be paired with Pi-lastic to ingest Zeek/Suricata logs for network forensics. It is not recommended to install both Pi-lastic and Pi-rewall on the same Pi as a) 8GB RAM likely won't be enough for all that and b) you don't want your SIEM/XDR instance installed on a border system that may have direct internet exposure.
  
  ## Requirements
  
