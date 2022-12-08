@@ -1,5 +1,12 @@
 # Forti-Pi
 
+## Demo
+### Pi-lastic
+* *Coming Soon!*
+
+### Pi-rewall
+* *Coming Soon!*
+
 ## Background
 I graduated undergrad in 2021 and had been using an old Dell PowerEdge R620 I had bought refurbished for my home network/SIEM. The server wasn't new when I bought it as it was originally meant for a capstone project but I enjoyed the PFSense + Elastic Stack setup so much I kept it up as my main driver until it met its untimely demise. While I loved having a full network analysis suite on ESXI, the server was huge, loud, and wasn't cheap to build. 
 
