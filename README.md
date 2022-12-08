@@ -1,4 +1,6 @@
-# Forti-Pi
+# Forti-Pi 
+
+***Elastic SIEM/XDR + Firewall with Zeek/Suricata Network Auditing***
 
 ## Demo
 ### Pi-lastic
