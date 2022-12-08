@@ -20,7 +20,7 @@ This is by no means a "highly secure" setup, please do not expose this setup to 
 
 ## Overview
 * Who?
-   * Anyone! That's the entire idea here. Pi's are inexpensive and great for beginners or those of us on a tight budget.
+   * Anyone! That's the entire idea here. Pi's are inexpensive and great for beginners or those of us on tight budgets.
 * What?
    * Forti-Pi is a proof-of-concept for deploying a basic SIEM/XDR & Firewall setup at home on dirt cheap hardware for personal security or security research
 * When?
