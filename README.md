@@ -12,3 +12,11 @@
    * Lowering the hardware/financial requirements for learning/labbing infosec benefits all of us and helps inspire the next generation of security researchers to push past what is considered "possible"
    * Small businesses may be unable to afford traditional SIEM/XDR products and related hardware, this helps close the gap
  
+ ## Components
+ ### Pi-lastic (AKA "plastic")
+ 
+ Pi-lastic is the Elastic Stack (Elasticsearch & Kibana) that is installed on your Pi to serve as the SIEM & XDR server. This can ingest all kinds of data and provide detailed dashboards to gleam deep insight on data such as network traffic.
+ 
+ ### Pi-rewall
+ 
+ Pi-rewall is the firewall installation. It is recommended for the Pi 4 due to the Gigabit support for USB-to-Ethernet adapters but will work on a Pi 3 as well. This install handles basic firewall, NAT, Zeek network auditing, & Suricata IDS alerts. This install can be paired with Pi-lastic to ingest Zeek/Suricata logs for network forensics.
