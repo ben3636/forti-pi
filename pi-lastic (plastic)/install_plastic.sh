@@ -388,6 +388,10 @@ echo "Please wait about 60 seconds for Kibana to be accessible at https://STATIC
 # 10. For Agents outside of Fleet Server (that has locally trusted the Self-Signed Cert for the Elastic CA) you will need to add the template below to the Fleet Settings with the contents of /ca.crt to allow the other Agents to trust/verify the lower certs signed by it.
 #   a. This will present itself as Agents showing "healthy" but not bringing in any data, this is caused by filebeat failing to validate the self-signed cert for Elasticsearch without the ca.crt file to check against
 #   b. Be sure to copy the template below with proper indentation and remove the "#" comment characters
+#   c. After adding the SSL config to Fleet settings, you can add your new agent:
+#      i. Feel free to use the default policy or create a new one for Firewalls, etc with more integrations
+#      ii. The only mod needed for the install command is adding '--insecure' since the certs are self-signed. Make sure textedit doesn't correct -- to a single dash (will cause problems)
+#      iii. Give the agent a minute or so to begin showing data before you start troubleshooting 
 
 #ssl:
 #  certificate_authorities:
@@ -398,3 +402,4 @@ echo "Please wait about 60 seconds for Kibana to be accessible at https://STATIC
 
 
 # NOTE: UFW protected devices will need access to 8220/9200 TCP on the Elastic-Pi. This may need to be allowed in at the Pi hosting Elastic AND outbound on the Pi with the Agent. It has also been observed that Pi's running Ubuntu Server with UFW will need 6789/tcp allowed from lo to lo in order for the Elastic Agent to function. If the Agent is not submitting data, check the UFW logs and adjust rules accordingly.
+
