@@ -320,9 +320,9 @@ echo -e "\033[5mInstallation Complete!\033[0m"
 ### ------------ Elastic Agent Installation & Setup (Fleet Server & All Other Hosts) ------------ ###
 # Use quick start in Kibana Fleet page
 # 1. Choose 'Quick Start' in Deployment Mode/Step 3 of Guide
-# 2. Change 'Fleet Server Host' address to static IP with 'https://' - Step 4 in Guide (Make sure you actually hit submit)
+# 2. Change 'Fleet Server Host' address to static IP with TLS on 8220 (https://STATIC_IP:8220) - Step 4 in Guide (Make sure you actually hit submit)
 # 3. Generate Service Token
-# 4. Copy Command in Step 6 of Guide & Change '--fleet-server-es' to static IP with TLS/HTTPS and append '--insecure' argument to acknowledge self-signed cert (REMOVE -fleet-server-insecure-http?????)
+# 4. Copy Command in Step 6 of Guide, Change '--fleet-server-es' to static IP with TLS/HTTPS, append '--insecure' argument to acknowledge self-signed cert, and REMOVE "-fleet-server-insecure-http"
 #   Hold onto this modded command for now, we need to prep the Fleet Server machine before running the install
 # 5. Run the following commands on the machine that will be the Fleet Server
 #   wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.17.7-linux-arm64.tar.gz
@@ -335,7 +335,7 @@ echo -e "\033[5mInstallation Complete!\033[0m"
 #   Check Fleet Settings to ensure both 'Fleet Server Hosts' & 'Elasticsearch Hosts' have https://YOUR_STATIC_IP:8220 (Fleet) & https://YOUR_STATIC_IP:9200 (Elasticsearch) set
 #   Save that and wait for the changes to deploy to the agent hosting Fleet Server
 #   If data still isn't flowing, check out /opt/Elastic/Agent/data/elastic-agent-*/logs for debug info
-# 10. For Agents outside of Fleet Server who have locally trusted the Self-Signed Cert for the Elastic CA, you will need to add the template below to the Fleet Settings with the contents of /ca.crt to allow the other Agents to trust/verify the lower certs signed by it (remove #'s).
+# 10. For Agents outside of Fleet Server who have locally trusted the Self-Signed Cert for the Elastic CA, you will need to add the template below to the Fleet Settings with the contents of /ca.crt to allow the other Agents to trust/verify the lower certs signed by it.
 #   This will present itself as Agents showing "healthy" but not bringing in any data, this is caused by filebeat failing to validate the self-signed cert for Elasticsearch without the ca.crt file to check against
 
 #ssl:
@@ -347,3 +347,4 @@ echo -e "\033[5mInstallation Complete!\033[0m"
 
 
 # NOTE: UFW protected devices will need access to 8220/9200 TCP on the Elastic-Pi. This may need to be allowed in at the Pi hosting Elastic AND outbound on the Pi with the Agent. It has also been observed that Pi's running Ubuntu Server with UFW will need 6789/tcp allowed from lo to lo in order for the Elastic Agent to function. If the Agent is not submitting data, check the UFW logs and adjust rules accordingly.
+
