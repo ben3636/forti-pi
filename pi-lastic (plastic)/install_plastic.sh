@@ -204,6 +204,15 @@ echo
 echo
 echo -e "\033[5m<------Paste the Contents of 'instances.yml' with your static IP in place of 'X.X.X.X' (See Included Template File in Repo)...------>\033[0m"
 sleep 15
+echo
+echo -n "Enter 'Y' when you're ready: "
+read ready
+
+while [[ $ready != "Y" ]]
+do
+    echo -n "Enter 'Y' when you're ready: "
+    read ready
+done
 nano instances.yml
 mv instances.yml /usr/share/elasticsearch/
 echo "Status: Complete"
@@ -287,18 +296,45 @@ sleep 15
 echo "<-----------------------------------------PASSWORDS----------------------------------------->"
 /usr/share/elasticsearch/bin/elasticsearch-setup-passwords auto
 echo "<------------------------------------------------------------------------------------------->"
+echo
+echo -n "Enter 'Y' when you've saved the passwords: "
+read ready
+
+while [[ $ready != "Y" ]]
+do
+    echo -n "Enter 'Y' when you've saved the passwords: "
+    read ready
+done
 echo 'elasticsearch.username: "kibana_system"' >> /etc/kibana/kibana.yml
 echo 'elasticsearch.password: "XXXXXXXXXXXXXXX"' >> /etc/kibana/kibana.yml
 echo
 echo
 echo -e "\033[5m<------Change the Kibana_System User's Password to What Was Auto Generated...------>\033[0m"
 sleep 15
+echo
+echo -n "Enter 'Y' when you're ready to update the 'kibana_system' user's password (copy it now from above if you need to): "
+read ready
+
+while [[ $ready != "Y" ]]
+do
+    echo -n "Enter 'Y' when you're ready to update the 'kibana_system' user's password (copy it now from above if you need to): "
+    read ready
+done
 nano /etc/kibana/kibana.yml
 /usr/share/kibana/bin/kibana-encryption-keys generate --force
 echo
 echo
 echo -e "\033[5m<------Copy the "xpack.encryptedSavedObjects.encryptionKey" Key Above and Update in Kibana's Config...------>\033[0m"
 sleep 15
+echo
+echo -n "Enter 'Y' when you're ready to update the saved object encryption key (copy it now from above if you need to): "
+read ready
+
+while [[ $ready != "Y" ]]
+do
+    echo -n "Enter 'Y' when you're ready to update the saved object encryption key (copy it now from above if you need to): "
+    read ready
+done
 nano /etc/kibana/kibana.yml
 echo "Status: Complete"
 
@@ -316,27 +352,42 @@ cp /ca.crt /usr/local/share/ca-certificates/
 update-ca-certificates
 echo
 echo -e "\033[5mInstallation Complete!\033[0m"
+sleep 0.5
+echo "Please wait about 60 seconds for Kibana to be accessible at https://STATIC_IP:5601 before you login with the 'elastic' user and auto-generated password"
 
 ### ------------ Elastic Agent Installation & Setup (Fleet Server & All Other Hosts) ------------ ###
 # Use quick start in Kibana Fleet page
+
 # 1. Choose 'Quick Start' in Deployment Mode/Step 3 of Guide
-# 2. Change 'Fleet Server Host' address to static IP with TLS on 8220 (https://STATIC_IP:8220) - Step 4 in Guide (Make sure you actually hit submit)
+
+# 2. Change 'Fleet Server Host' address to static IP with TLS on 8220 'https://STATIC_IP:8220' - Step 4 in Guide (Make sure you actually hit submit)
+
 # 3. Generate Service Token
-# 4. Copy Command in Step 6 of Guide, Change '--fleet-server-es' to static IP with TLS/HTTPS, append '--insecure' argument to acknowledge self-signed cert, and REMOVE "-fleet-server-insecure-http"
-#   Hold onto this modded command for now, we need to prep the Fleet Server machine before running the install
+
+# 4. Copy Command in Step 6 of Guide & Make Changes Shown Below:
+#   a. Change '--fleet-server-es' to static IP with TLS/HTTPS
+#   b. Replace the '-fleet-server-insecure-http' argument with '--insecure' to acknowledge self-signed cert
+#   c. Hold onto this modded command for now, we need to prep the Fleet Server machine before running the install
+
 # 5. Run the following commands on the machine that will be the Fleet Server
 #   wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.17.7-linux-arm64.tar.gz
 #   tar -xvf elastic-agent-7.17.7-linux-arm64.tar.gz
 #   cd elastic-agent-7.17.7-linux-arm64/
+
 # 6. Run the install command you made above (Step 4)
+
 # 7. Check status of Fleet Server in Kibana
+
 # 8. Add system integration to fleet server policy
-# 9. If you don't see data flowing in at this point your Fleet settings may be off
-#   Check Fleet Settings to ensure both 'Fleet Server Hosts' & 'Elasticsearch Hosts' have https://YOUR_STATIC_IP:8220 (Fleet) & https://YOUR_STATIC_IP:9200 (Elasticsearch) set
-#   Save that and wait for the changes to deploy to the agent hosting Fleet Server
-#   If data still isn't flowing, check out /opt/Elastic/Agent/data/elastic-agent-*/logs for debug info
-# 10. For Agents outside of Fleet Server who have locally trusted the Self-Signed Cert for the Elastic CA, you will need to add the template below to the Fleet Settings with the contents of /ca.crt to allow the other Agents to trust/verify the lower certs signed by it.
-#   This will present itself as Agents showing "healthy" but not bringing in any data, this is caused by filebeat failing to validate the self-signed cert for Elasticsearch without the ca.crt file to check against
+
+# 9. If you don't see data flowing in at this point your Fleet settings may be off:
+#   a. Check Fleet Settings to ensure 'Fleet Server Hosts' is set to 'https://YOUR_STATIC_IP:8220' & 'Elasticsearch Hosts' is set to 'https://YOUR_STATIC_IP:9200'
+#   b. Save that and wait for the changes to deploy to the agent hosting Fleet Server
+#   c. If data still isn't flowing, check out /opt/Elastic/Agent/data/elastic-agent-*/logs for debug info
+
+# 10. For Agents outside of Fleet Server (that has locally trusted the Self-Signed Cert for the Elastic CA) you will need to add the template below to the Fleet Settings with the contents of /ca.crt to allow the other Agents to trust/verify the lower certs signed by it.
+#   a. This will present itself as Agents showing "healthy" but not bringing in any data, this is caused by filebeat failing to validate the self-signed cert for Elasticsearch without the ca.crt file to check against
+#   b. Be sure to copy the template below with proper indentation and remove the "#" comment characters
 
 #ssl:
 #  certificate_authorities:
@@ -347,4 +398,3 @@ echo -e "\033[5mInstallation Complete!\033[0m"
 
 
 # NOTE: UFW protected devices will need access to 8220/9200 TCP on the Elastic-Pi. This may need to be allowed in at the Pi hosting Elastic AND outbound on the Pi with the Agent. It has also been observed that Pi's running Ubuntu Server with UFW will need 6789/tcp allowed from lo to lo in order for the Elastic Agent to function. If the Agent is not submitting data, check the UFW logs and adjust rules accordingly.
-
