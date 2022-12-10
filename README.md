@@ -4,7 +4,9 @@
 
 ## Demo
 ### Pi-lastic
-* *Coming Soon!*
+* Initial Install
+
+[![Forti-Pi - Pi-lastic Installation Demo](https://img.youtube.com/vi/fe6dK92uTA4/0.jpg)](https://youtu.be/fe6dK92uTA4 "Forti-Pi - Pi-lastic Installation Demo")
 
 ### Pi-rewall
 * *Coming Soon!*
