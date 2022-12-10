@@ -8,6 +8,10 @@
 
 [![Forti-Pi - Pi-lastic Installation Demo](https://img.youtube.com/vi/fe6dK92uTA4/0.jpg)](https://youtu.be/fe6dK92uTA4 "Forti-Pi - Pi-lastic Installation Demo")
 
+* Fleet Configuration
+
+[![Fort-Pi - Pi-lastic Fleet Configuration Demo (Realtime)](https://img.youtube.com/vi/A-GtOl2wKzQ/0.jpg)](https://youtu.be/A-GtOl2wKzQ "Fort-Pi - Pi-lastic Fleet Configuration Demo (Realtime)")
+
 ### Pi-rewall
 * *Coming Soon!*
 
