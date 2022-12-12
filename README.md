@@ -12,6 +12,11 @@
 
 [![Fort-Pi - Pi-lastic Fleet Configuration Demo (Realtime)](https://img.youtube.com/vi/A-GtOl2wKzQ/0.jpg)](https://youtu.be/A-GtOl2wKzQ "Fort-Pi - Pi-lastic Fleet Configuration Demo (Realtime)")
 
+* Pi-rewall Fleet Onboarding (Zeek & Suricata Logs)
+
+[![Forti-Pi - Pi-lastic Pi-rewall Fleet Onboarding (Realtime)](https://img.youtube.com/vi/2ePaJ2xiMW0/0.jpg)](https://www.youtube.com/watch?v=2ePaJ2xiMW0 "Forti-Pi - Pi-lastic Pi-rewall Fleet Onboarding (Realtime)")
+
+
 ### Pi-rewall
 * *Coming Soon!*
 
