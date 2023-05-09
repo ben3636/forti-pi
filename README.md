@@ -2,6 +2,8 @@
 
 ***Elastic SIEM/XDR + Firewall with Zeek/Suricata Network Auditing***
 
+> NOTE: Pi-rewall files have been added but heavily redacted for security. This portion of the project will require you to fill in the redacted portions of the install script and config files. Everything is there that you need you will just need to plan your network ranges, etc and update the configs. Do not run the install script before checking all files and the install script itself for required updates where things were redacted.
+
 ## Demo
 ### Pi-lastic
 * Initial Install
@@ -15,10 +17,6 @@
 * Pi-rewall Fleet Onboarding (Zeek & Suricata Logs)
 
 [![Forti-Pi - Pi-lastic Pi-rewall Fleet Onboarding (Realtime)](https://img.youtube.com/vi/2ePaJ2xiMW0/0.jpg)](https://www.youtube.com/watch?v=2ePaJ2xiMW0 "Forti-Pi - Pi-lastic Pi-rewall Fleet Onboarding (Realtime)")
-
-
-### Pi-rewall
-* *Coming Soon!*
 
 ## Background
 I graduated undergrad in 2021 and had been using an old Dell PowerEdge R620 I had bought refurbished for my home network/SIEM. The server wasn't new when I bought it as it was originally meant for a capstone project but I enjoyed the PFSense + Elastic Stack setup so much I kept it up as my main driver until it met its untimely demise. While I loved having a full network analysis suite on ESXI, the server was huge, loud, and wasn't cheap to build. 
