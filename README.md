@@ -2,7 +2,7 @@
 
 ***Elastic SIEM/XDR + Firewall with Zeek/Suricata Network Auditing***
 
-> NOTE: Pi-rewall files have been added but heavily redacted for security. This portion of the project will require you to fill in the redacted portions of the install script and config files. Everything is there that you need you will just need to plan your network ranges, etc and update the configs. Do not run the install script before checking all files and the install script itself for required updates where things were redacted.
+> NOTE: Pi-rewall files have been added but heavily redacted for security. This portion of the project will require you to fill in the redacted portions of the install script and config files. Everything is there that you need you will just need to plan your network ranges, etc and update the configs. Do not run the install script before checking all files and the install script itself for required updates where things were redacted. Feel free to take the pieces you want and make your own version, this is intended as a jumping off point so you don't need to build it from scratch :)
 
 ## Demo
 ### Pi-lastic
